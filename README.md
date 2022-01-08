@@ -20,7 +20,7 @@ while True:
     a=a+1
 ```
     
-###How To Create Address and Private Key  Tron TRX
+### How To Create Address and Private Key  Tron TRX
 
 Install :
 
@@ -74,7 +74,7 @@ npm install pip3
 
 ```
 
-###pip3 Linux:
+### pip3 Linux:
 
     Step 1 – Update system. It is always a good idea to update before trying to install a new package. …
     Step 2 – Install pip3. If Python 3 has already been installed on the system, execute the command below to install pip3:
@@ -83,13 +83,13 @@ sudo apt-get -y install python3-pip
 ```
 
   
-###How To Install Spyder IDE Python
+### How To Install Spyder IDE Python
 
 You can install Spyder with the pip package manager, which comes by default with most Python installations. Before installing Spyder itself by this method, you need to acquire the Python programming language. Then, to install Spyder and its other dependencies, run pip install spyder  (Read More)
 
  
 
-###How to install virtualenv:
+### How to install virtualenv:
 
     Install pip first. sudo apt-get install python3-pip.
     Then install virtualenv using pip3. …
