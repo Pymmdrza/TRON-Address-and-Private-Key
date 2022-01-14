@@ -1,26 +1,53 @@
-from tronpy import keys
+import ecdsa
+import base58
+import requests
+from Crypto.Hash import keccak
 from tronpy.keys import PrivateKey
-from tronpy.providers import HTTPProvider
+import colorama
+from colorama import Fore, Back, Style
+
+colorama.init()
 
 
-a=1
-while (a<=100):
+print("Please Wait...")
+
+a = 1
+while True:
 
     priv_key = PrivateKey.random()
     xbase = priv_key.public_key.to_base58check_address()
     xHex = priv_key.public_key.to_hex_address()
     Prix = priv_key.hex()
     xPub = priv_key.public_key.hex()
+    bloc = requests.get("https://apilist.tronscan.org/api/account?address=" + xbase)
+    res = bloc.json()
+    balances = dict(res)["balance"]
+    transaction = dict(res)["totalTransactionCount"]
+    frozen = dict(res)["totalFrozen"]
 
     print("\n\n===========================")
-    print(str(a)+" --> Account information ")
+    print(str(a) + " --> Account information ")
     print("---------------------------")
-    print("Address >=>",xbase)
+    print(Fore.YELLOW + "Address :" + xbase + " " + Style.RESET_ALL)
     print("---------------------------")
-    print("Hex >=>", xHex)
+    print(Fore.LIGHTRED_EX + "Hex :", xHex + " " + Style.RESET_ALL)
     print("---------------------------")
-    print("Private Key >=>", Prix)
+    print(Fore.LIGHTWHITE_EX + "Private Key :", Prix + " " + Style.RESET_ALL)
     print("---------------------------")
-    print("Public Address >=>", xPub)
+    print(Fore.LIGHTGREEN_EX + "Public Address :", xPub + " " + Style.RESET_ALL)
     print("---------------------------")
-    a=a+1
+    print(
+        Fore.RED
+        + "[ "
+        + " Balance = "
+        + str(balances)
+        + " | "
+        + "  Frozen  = "
+        + str(frozen)
+        + " | "
+        + "  Transactions = "
+        + str(transaction)
+        + " ]"
+        + Style.RESET_ALL
+    )
+    a = a + 1
